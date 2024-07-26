@@ -1,56 +1,56 @@
-package th.mfu;
+package th.mfu.dto;
 
 import java.time.LocalDate;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-@Entity
-public class Customer {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+public class CustomerDTO {
     private Long id;
 
     @JsonProperty("fullname")
-    private String Name;
-    
-    private String Address;
+    private String name;
 
-    private String Email;
+    private String address;
+
+    private String email;
 
     @JsonProperty("tel")
     private String phone;
 
     private LocalDate birthday;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
     public void setAddress(String address) {
-        Address = address;
+        this.address = address;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
     public String getPhone() {
@@ -60,7 +60,6 @@ public class Customer {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-
     @JsonSerialize(using = LocalDateSerializer.class)
     @JsonDeserialize(using = LocalDateDeserializer.class)
     public LocalDate getBirthday() {
@@ -71,13 +70,4 @@ public class Customer {
         this.birthday = birthday;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    
 }
